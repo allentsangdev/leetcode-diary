@@ -1,2 +1,2 @@
 # Leetcode Diary
-This repository records Leetcode solutions 
+This repository records Leetcode solution
