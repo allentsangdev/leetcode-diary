@@ -13,19 +13,14 @@ class Solution:
 
         # cast to number list to a set to make sure there is no duplicated number
         numSet = set(nums)
-
-        sequenceLength = []
-        # check if a number is a start of a sequence
-        for num in nums:
-            # if a number is not the start of a sequence, continue
-            if num - 1 in numSet:
-                continue
+        longest = 1
+        for num in numSet:
             # if a number is the start of a sequence
-            elif num - 1 not in numSet:
-                # process to check if num + nextIndex exisit
+            if num - 1 not in numSet:
                 nextIndex = 1
                 while num + nextIndex in numSet:
                     nextIndex += 1
-                sequenceLength.append(nextIndex)
+                if nextIndex > longest:
+                    longest = nextIndex
         
-        return max(sequenceLength)
+        return longest
