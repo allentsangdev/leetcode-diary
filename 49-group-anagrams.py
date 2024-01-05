@@ -33,3 +33,15 @@ class Solution:
         
         # convert the hash map values (which are lists of strings) to a list of lists of strings
         return list(hashMap.values())
+    
+    def groupAnagrams_04012024(self, strs: List[str]) -> List[List[str]]:
+        check = {} # ["a","b","c"] : [abc]
+
+        for i in strs:
+            sorted_str = ''.join(sorted(i))
+            if sorted_str not in check:
+                check[sorted_str] = [i]
+            else:
+                check[sorted_str].append(i)
+
+        return check.values()
