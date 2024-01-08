@@ -29,6 +29,35 @@ class Solution:
                 break
 
         return result
+    
+        def topKFrequent_01082024(self, nums, k):
+            # Hash map to count the frequency of each number
+            hashMap = defaultdict(int)  # num: freq
+
+            # A list with the length equals to the size of the input array + 1
+            # The indexes of this list represent frequency
+            # The values of this list store numbers that appear
+            freq = [[] for _ in range(len(nums) + 1)]
+
+            res = []
+
+            # Count the frequencies
+            for num in nums:
+                hashMap[num] += 1
+
+            # Fill the frequency list
+            for num, frequency in hashMap.items():
+                freq[frequency].append(num)
+
+            # Gather the k most frequent elements
+            for i in range(len(freq) - 1, 0, -1):
+                for num in freq[i]:
+                    if len(res) < k:
+                        res.append(num)
+                    else:
+                        return res
+
+            return res
 
 testNumber = [3,2,3,1,2,4,5,5,6,7,7,8,2,3,1,1,1,10,11,5,6,2,4,7,8,5,6]
 top = 10
